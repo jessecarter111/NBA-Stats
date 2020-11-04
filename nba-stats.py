@@ -17,10 +17,22 @@ headers = [th.getText() for th in soup.findAll('tr', limit=2)[0].findAll('th')]
 
 headers = headers [1:]
 
+print(headers)
+
 # avoid the first header row
 rows = soup.findAll('tr')[1:]
 player_stats = [[td.getText() for td in rows[i].findAll('td')]
             for i in range(len(rows))]
 
 stats = pd.DataFrame(player_stats, columns = headers)
-print(stats.head(100))
+#print(stats)
+##for x in player_stats:
+##        for y in x:
+##            print(y)
+#        break
+
+print(player_stats[1])
+for x in player_stats:
+    for i, y in enumerate(headers):
+        print(x[i])
+    break
