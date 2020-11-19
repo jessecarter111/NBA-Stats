@@ -22,9 +22,11 @@ class Command(BaseCommand):
             for i, x in enumerate(p):
                 if p[i] == '':
                     p[i] = '0'
-        print(len(player_data[0]))
+       
         for p in player_data:
+            #Data verification, check that the player data frame is correctly sized
             if len(p) == 29:
+                #Verify the player db is 
                 if not Player.objects.filter(player_name=p[0]).exists() and Team.objects.filter(team_abrev=p[3]):
                     entry = Player(player_name=p[0], position=p[1], age=p[2], team=Team.objects.get(team_abrev=p[3]), games=p[4],\
                                 games_started=p[5], minutes_played=p[6], field_goals=p[7],\
